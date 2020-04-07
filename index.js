@@ -7,7 +7,7 @@ bot.login(token);
 
 bot.on('ready', () =>{
     console.log("We're rolling baby");
-    bot.user.setActivity('to speeen', { type: 'LISTENING' })
+    bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', { type: 'LISTENING' })
   .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
   .catch(console.error);
 })
