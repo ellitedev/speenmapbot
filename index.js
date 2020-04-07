@@ -9,15 +9,10 @@ bot.on('ready', () =>{
     console.log("We're rolling baby");
 })
 
-bot.on('ready', () => {
-    bot.user.setStatus('available')
-    bot.user.setPresence({
-        game: {
-            name: 'to speeeeeeeeen',
-            type: "LISTENING",
-        }
-    });
-});
+bot.user.setActivity("to speeeeeeeen", {
+    type: "LISTENING",
+    url: "https://spinsha.re/"
+  });
 
 bot.on('message', message => {
 	if (message.content.includes('map')) {
