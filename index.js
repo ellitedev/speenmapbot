@@ -26,6 +26,11 @@ bot.on('message', message => {
         if (message.content.includes('mapper')) {
             message.react('🗺️');
         }
+    else {
+        if (message.content.includes('speen')) {
+            message.react('<:SP:695440682952687656>');
+        }
+    }
     }
     }
     }
