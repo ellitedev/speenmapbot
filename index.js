@@ -14,7 +14,7 @@ bot.on("ready", () =>{
     bot.user.setPresence({
         status: "online",  //You can show online, idle....
         game: {
-            name: "to speeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeen",  //The message shown
+            name: "to speeeeeeeeeeeeeeen",  //The message shown
             type: "LISTENING" //PLAYING: WATCHING: LISTENING: STREAMING:
         }
     });
