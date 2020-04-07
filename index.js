@@ -7,12 +7,11 @@ bot.login(token);
 
 bot.on('ready', () =>{
     console.log("We're rolling baby");
+    client.user.setActivity('to speeen', { type: 'LISTENING' })
+  .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
+  .catch(console.error);
 })
 
-bot.user.setActivity("to speeeeeeeen", {
-    type: "LISTENING",
-    url: "https://spinsha.re/"
-  });
 
 bot.on('message', message => {
 	if (message.content.includes('map')) {
