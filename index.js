@@ -28,8 +28,9 @@ bot.on('message', message => {
         }
     else {
         if (message.content.includes('speen')) {
-            const emoji = client.emojis.cache.get(config.emojiID);
-            message.react(emoji);
+            message.react('695440682952687656');
+            message.react('695440704809336942');
+            message.react('695440945306533939');
         }
     }
     }
