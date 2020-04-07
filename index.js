@@ -31,9 +31,9 @@ bot.on('message', message => {
         }
     else {
         if (message.content.includes('speen')) {
-            message.react(SP.id);
-            message.react(EE.id);
-            message.react(N.id);
+            message.react('${SP}');
+            message.react('${EE}');
+            message.react('${N}');
         }
     }
     }
