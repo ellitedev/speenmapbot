@@ -10,8 +10,8 @@ bot.on('ready', () =>{
 })
 
 bot.on("ready", () =>{
-    console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setPresence({
+    console.log(`Logged in as ${bot.user.tag}!`);
+    bot.user.setPresence({
         status: "online",  //You can show online, idle....
         game: {
             name: "to speeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeen",  //The message shown
