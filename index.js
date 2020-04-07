@@ -9,16 +9,15 @@ bot.on('ready', () =>{
     console.log("We're rolling baby");
 })
 
-bot.on("ready", () =>{
-    console.log(`Logged in as ${bot.user.tag}!`);
+bot.on('ready', () => {
+    bot.user.setStatus('available')
     bot.user.setPresence({
-        status: "online",  //You can show online, idle....
         game: {
-            name: "to speeeeeeeeeeeeeeen",  //The message shown
-            type: "LISTENING" //PLAYING: WATCHING: LISTENING: STREAMING:
+            name: 'to speeeeeeeeen',
+            type: "LISTENING",
         }
     });
- });
+});
 
 bot.on('message', message => {
 	if (message.content.includes('map')) {
