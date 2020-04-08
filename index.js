@@ -30,10 +30,6 @@ bot.on('message', message => {
             message.react('🗺️');
         }
     else {
-        if (message.content.includes('mappers')) {
-            message.react('🗺️');
-        }
-    else {
         if (message.content.includes('speen')) {
             message.react('695440682952687656');
             message.react('695440704809336942');
