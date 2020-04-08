@@ -7,7 +7,7 @@ bot.login(token);
 
 bot.on('ready', () =>{
     console.log("We're rolling baby");
-    bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', { type: 'LISTENING' })
+    bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', { type: 'STREAMING' }, { url: 'https://spinsha.re/'})
   .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
   .catch(console.error);
 })
@@ -27,6 +27,10 @@ bot.on('message', message => {
         }
     else {
         if (message.content.includes('mapper')) {
+            message.react('🗺️');
+        }
+    else {
+        if (message.content.includes('mappers')) {
             message.react('🗺️');
         }
     else {
