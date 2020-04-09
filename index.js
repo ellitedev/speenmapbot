@@ -18,9 +18,7 @@ bot.on('message', message => {
 	if (message.content.includes('map'||'mapping'||'mapped'||'mapper'||'mappers')) {
         message.react('🗺️');
     }
-
-
-    else if (message.content.includes('speen')){
+        if (message.content.includes('speen')){
 
             message.react('695440682952687656');
             message.react('695440704809336942');
