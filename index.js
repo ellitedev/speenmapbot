@@ -49,17 +49,8 @@ bot.on('message', message => {
                 message.react('🔍');
                 let searchterm = message.content.slice(8)
                 api.search(searchterm).then(function(songArray) {
-                    var firstSong = songArray[0]
-                    try{
-                    const songEmbed = new Discord.MessageEmbed()
-                    .setTitle(firstSong.title + ", by " + firstSong.artist)
-                    .setImage(firstSong.cover)
-                    .setURL('https://spinsha.re/song/'+firstSong.id)
-                    .setAuthor("Charter: " + firstSong.charter)
-                    .setFooter('Search results provided by Spinsha.re', 'https://spinsha.re/assets/img/favicon.png')
-                    message.channel.send(songEmbed);
-                    }
-                    catch(err){message.react('❌');}
+                    let i = 0;
+                    GetSongData(songArray, i, message, searchterm);
                     });
                 }
                                 
@@ -71,3 +62,39 @@ bot.on('message', message => {
     }
     }
     });
+
+    function GetSongData (songArray, i, message){
+        var firstSong = songArray[i]
+        try{
+        const songEmbed = new Discord.MessageEmbed()
+        .setTitle(firstSong.title + ", by " + firstSong.artist)
+        .setImage(firstSong.cover)
+        .setURL('https://spinsha.re/song/'+firstSong.id)
+        .setAuthor("Charter: " + firstSong.charter)
+        .setFooter('Search results provided by Spinsha.re', 'https://spinsha.re/assets/img/favicon.png')
+        message.channel.send(songEmbed).then(function(songEmbed){
+            songEmbed.react('⬅')
+            songEmbed.react('➡')
+            
+            const filter = (reaction, user) => {return ['⬅', '➡'].includes(reaction.emoji.name) && user.id === message.author.id;};
+            songEmbed.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] }).then(collected => {
+                const reaction = collected.first();
+                if (reaction.emoji.name === '⬅') {
+                    i--
+                    GetSongData(songArray, i, message);
+                    songEmbed.delete();
+                }
+                else {
+                    i++
+                    GetSongData(songArray, i, message);
+                    songEmbed.delete();
+                }
+            })
+            .catch(collected => {
+            });
+        })
+        }
+        catch(err){
+            message.react('❌');
+        };
+    };
