@@ -36,12 +36,8 @@ bot.on('message', message => {
             message.react('695440704809336942');
             message.react('695440945306533939');
         }
-    else {
-    if (message.content.includes('speen')) {
-                message.react('🗺️');
-        }
     else {         
-        if (message.content.includes('nappers')) {
+        if (message.content.includes('mappers')) {
             message.react('🗺️');
         }
         else{
@@ -52,11 +48,9 @@ bot.on('message', message => {
                     let i = 0;
                     GetSongData(songArray, i, message, searchterm);
                     });
-                }
-                                
+                }           
             }
         }
-    }
     }
     }
     }
