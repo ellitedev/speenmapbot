@@ -45,6 +45,7 @@ bot.on('message', message => {
         try{
         const songEmbed = new Discord.MessageEmbed()
         .setTitle(firstSong.title + ", by " + firstSong.artist)
+        .setColor('#55acee')
         .setImage(firstSong.cover)
         .setURL('https://spinsha.re/song/'+firstSong.id)
         .setAuthor("Charter: " + firstSong.charter)
