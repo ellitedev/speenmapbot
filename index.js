@@ -56,7 +56,7 @@ bot.on('message', message => {
                     .setImage(firstSong.cover)
                     .setURL('https://spinsha.re/song/'+firstSong.id)
                     .setAuthor("Charter: " + firstSong.charter)
-                    .setFooter('Search results provided by Spinsha.re')
+                    .setFooter('Search results provided by Spinsha.re', 'https://spinsha.re/assets/img/favicon.png')
                     message.channel.send(songEmbed);
                     }
                     catch(err){message.react('❌');}
