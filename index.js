@@ -15,53 +15,30 @@ bot.on('ready', () =>{
 
 
 bot.on('message', message => {
-	if (message.content.includes('map')) {
+	if (message.content.includes('map'||'mapping'||'mapped'||'mapper'||'mappers')) {
         message.react('🗺️');
     }
-    else {
-        if (message.content.includes('mapping')) {
-            message.react('🗺️');
-        }
-    else {
-        if (message.content.includes('mapped')) {
-            message.react('🗺️');
-        }
-    else {
-        if (message.content.includes('mapper')) {
-            message.react('🗺️');
-        }  
-    else {
-        if (message.content.includes('speen')) {
+
+
+    else if (message.content.includes('speen')){
+
             message.react('695440682952687656');
             message.react('695440704809336942');
             message.react('695440945306533939');
-        }
-    else {
-    if (message.content.includes('speen')) {
-                message.react('🗺️');
-        }
-    else {         
-        if (message.content.includes('nappers')) {
             message.react('🗺️');
         }
-        else{
-            if (message.content.startsWith('!search ')) {
-                message.react('🔍');
-                let searchterm = message.content.slice(8)
-                api.search(searchterm).then(function(songArray) {
-                    let i = 0;
-                    GetSongData(songArray, i, message, searchterm);
-                    });
-                }
-                                
-            }
-        }
+
+
+
+    else if (message.content.startsWith('!search ')) {
+        message.react('🔍');
+        let searchterm = message.content.slice(8)
+            api.search(searchterm).then(function(songArray) {
+                let i = 0;
+                GetSongData(songArray, i, message, searchterm);
+            });
     }
-    }
-    }
-    }
-    }
-    });
+});
 
     function GetSongData (songArray, i, message){
         var firstSong = songArray[i]
