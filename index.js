@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = process.env.token;
-
+const SSAPI = require('./assets/js/module.api.js');
+let api = new SSAPI();
 
 bot.login(token);
 
@@ -35,8 +36,33 @@ bot.on('message', message => {
             message.react('695440704809336942');
             message.react('695440945306533939');
         }
+    else {
+    if (message.content.includes('speen')) {
+                message.react('🗺️');
+        }
+    else {
+    if (message.content.startsWith('!search ')) {
+            message.react('🔍');
+            let searchterm = message.content.slice(8)
+            api.search(searchterm).then(function(songArray) {
+                var firstSong = songArray[0]
+                try{
+                const songEmbed = new Discord.MessageEmbed()
+                .setTitle(firstSong.title + ", by " + firstSong.artist)
+                .setImage(firstSong.cover)
+                .setURL('https://spinsha.re/song/'+firstSong.id)
+                .setAuthor("Charter: " + firstSong.charter)
+                .setFooter('Search results provided by Spinsha.re')
+                message.channel.send(songEmbed);
+                }
+                catch(err){message.react('❌');}
+                });
+            }
+                            
+        }
+                
     }
     }
     }
     }
-});
+}});
