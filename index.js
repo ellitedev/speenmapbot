@@ -30,8 +30,8 @@ bot.on('message', message => {
         }
 
 
-
-    else if (lowerCaseMessageContent.startsWith('!search ')) {
+    else if (lowerCaseMessageContent.startsWith('!search ') && message.channel.id == '638817716634910722') {
+        console.log(message.channel.id);
         message.react('🔍');
         let searchterm = message.content.slice(8)
             api.search(searchterm).then(function(songArray) {
