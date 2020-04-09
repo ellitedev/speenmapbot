@@ -21,7 +21,7 @@ bot.on('message', message => {
     }
 
 
-    else if (lowerCaseMessageContent.includes('speen')){
+    if (lowerCaseMessageContent.includes('speen')){
 
             message.react('695440682952687656');
             message.react('695440704809336942');
