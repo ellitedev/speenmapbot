@@ -1,3 +1,4 @@
+//this api is taken directly from the spinsha.re client, and modified a little
 const axios = require('axios');
 
 class SHAPI {

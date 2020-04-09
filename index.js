@@ -70,4 +70,4 @@ bot.on('message', message => {
     }
     }
     }
-}});
+    });
