@@ -11,6 +11,8 @@ bot.on('ready', () =>{
     bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', { type: 'STREAMING' }, { url: 'https://spinsha.re/' })
   .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
   .catch(console.error);
+  const channel = bot.channels.cache.get('697732663045259334');
+  channel.send("We're back up and speening!");
 })
 
 
@@ -20,13 +22,11 @@ bot.on('message', message => {
         message.react('🗺️');
     }
 
-
+  
     if (lowerCaseMessageContent.includes('speen')){
-
             message.react('695440682952687656');
             message.react('695440704809336942');
             message.react('695440945306533939');
-            message.react('🗺️');
         }
 
 
