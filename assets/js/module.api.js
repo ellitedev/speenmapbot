@@ -1,4 +1,4 @@
-//this api is taken directly from the spinsha.re client, and modified a little
+//this api is taken directly from the spinsha.re client, and modified a little. Attribution of original source: https://github.com/AndreasWebdev/spinshare-client/blob/master/src/assets/js/module.api.js
 const axios = require('axios');
 
 class SHAPI {
