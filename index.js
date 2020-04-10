@@ -33,7 +33,7 @@ bot.on('message', message => {
 
     if (lowerCaseMessageContent.includes('spleen')){
             message.react('95440682952687656');
-            message.react('🇱 ');
+            message.react(client.emojis.find(emoji => emoji.name === "regional_indicator_l"));
             message.react('695440704809336942');
             message.react('695440945306533939');
         }
