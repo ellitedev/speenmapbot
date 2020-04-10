@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = 'process.env.token';
+const token = process.env.token;
 const SSAPI = require('./assets/js/module.api.js');
 var GetSongData = require('./assets/js/module.search.js');
 var GetUserData = require('./assets/js/module.searchuser.js');
