@@ -1,7 +1,9 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = process.env.token;
+const token = 'process.env.token';
 const SSAPI = require('./assets/js/module.api.js');
+var GetSongData = require('./assets/js/module.search.js');
+var GetUserData = require('./assets/js/module.searchuser.js');
 let api = new SSAPI();
 
 bot.login(token);
@@ -9,8 +11,8 @@ bot.login(token);
 bot.on('ready', () =>{
     console.log("We're rolling baby");
     bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', { type: 'STREAMING' }, { url: 'https://spinsha.re/' })
-  .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
-  .catch(console.error);
+.then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
+.catch(console.error);
 })
 
 
@@ -30,52 +32,21 @@ bot.on('message', message => {
 
     else if (lowerCaseMessageContent.startsWith('!search ') && message.channel.id == '638817716634910722') {
         message.react('🔍');
+        message.react('🎵');
         let searchterm = message.content.slice(8)
             api.search(searchterm).then(function(songArray) {
                 let i = 0;
-                GetSongData(songArray, i, message);
+                GetSongData(songArray.songs, i, message);
+            });
+    }
+    else if (lowerCaseMessageContent.startsWith('!usearch ') && message.channel.id == '638817716634910722') {
+        message.react('🔍');
+        let searchterm = message.content.slice(9)
+            api.search(searchterm).then(function(userArray) {
+                let i = 0;
+                GetUserData(userArray.users, i, message);
             });
     }
 });
 
-    function GetSongData (songArray, i, message){
-        var arrayLengthIndex = i + 1;
-        var firstSong = songArray[i];
-        try{
-        const songEmbed = new Discord.MessageEmbed()
-        .setTitle(firstSong.title + ", by " + firstSong.artist)
-        .setColor('#55acee')
-        .setImage(firstSong.cover)
-        .setURL('https://spinsha.re/song/'+firstSong.id)
-        .setAuthor("Charter: " + firstSong.charter)
-        .setFooter('Page '+ arrayLengthIndex +' of '+ songArray.length +'. Search results provided by Spinsha.re', 'https://spinsha.re/assets/img/favicon.png')
-        message.channel.send(songEmbed).then(function(songEmbed){
-            var songArrayLength = songArray.length
-            if (songArrayLength == 1){}
-            else if(i == 0 && songArrayLength != 1){songEmbed.react('➡')}
-            else if(arrayLengthIndex == songArrayLength && songArrayLength != 1){songEmbed.react('⬅')}
-            else {songEmbed.react('⬅'); songEmbed.react('➡')}
-            
-            
-            const filter = (reaction, user) => {return ['⬅', '➡'].includes(reaction.emoji.name) && user.id === message.author.id;};
-            songEmbed.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] }).then(collected => {
-                const reaction = collected.first();
-                if (reaction.emoji.name === '⬅') {
-                    i--
-                    GetSongData(songArray, i, message);
-                    songEmbed.delete();
-                }
-                else {
-                    i++
-                    GetSongData(songArray, i, message);
-                    songEmbed.delete();
-                }
-            })
-            .catch(collected => {
-            });
-        })
-        }
-        catch(err){
-            message.react('❌');
-        };
-    };
+    

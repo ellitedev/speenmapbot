@@ -128,7 +128,7 @@ class SHAPI {
             if(response.data.version !== supportedVersion) {
                 throw new Error("Client is outdated!");
             }
-            return response.data.data.songs;
+            return response.data.data;
 
         }).catch(function(error) {
             throw new Error(error);
