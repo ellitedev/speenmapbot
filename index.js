@@ -31,7 +31,7 @@ bot.on('message', message => {
             message.react('695440945306533939');
         }
 
-    if (lowerCaseMessageContent.includes('spleen')){
+    else if (lowerCaseMessageContent.includes('spleen')){
             message.react('95440682952687656');
             message.react('🇱');
             message.react('695440704809336942');
