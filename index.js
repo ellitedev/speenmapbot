@@ -31,6 +31,10 @@ bot.on('message', message => {
             message.react('695440945306533939');
         }
 
+    if (lowerCaseMessageContent.includes('spleen')){
+            message.react('🇱');
+        }
+
 
     else if (lowerCaseMessageContent.startsWith('!search ') && message.channel.id == '638817716634910722') {
         message.react('🔍');
