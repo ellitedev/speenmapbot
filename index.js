@@ -11,8 +11,6 @@ bot.on('ready', () =>{
     bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', { type: 'STREAMING' }, { url: 'https://spinsha.re/' })
   .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
   .catch(console.error);
-  const channel = bot.channels.cache.get('697732663045259334');
-  channel.send("We're back up and speening!");
 })
 
 
