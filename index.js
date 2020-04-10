@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = process.env.token;
 const SSAPI = require('./assets/js/module.api.js');
+const emojiCharacters = require('./assets/js/module.emojis.js');
 var GetSongData = require('./assets/js/module.search.js');
 var GetUserData = require('./assets/js/module.searchuser.js');
 let api = new SSAPI();
@@ -27,6 +28,13 @@ bot.on('message', message => {
   
     if (lowerCaseMessageContent.includes('speen')){
             message.react('695440682952687656');
+            message.react('695440704809336942');
+            message.react('695440945306533939');
+        }
+
+    if (lowerCaseMessageContent.includes('spleen')){
+            message.react('95440682952687656');
+            message.react(emojiCharacters.l);
             message.react('695440704809336942');
             message.react('695440945306533939');
         }
