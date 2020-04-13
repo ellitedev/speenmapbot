@@ -30,7 +30,7 @@ bot.on('message', message => {
        	message.react('📈');
     }
 
-    if (message.content.includes('map')) {
+    if (message.content.includes('map ' || ' map ')) {
         message.react('🗺️');
     }
   
