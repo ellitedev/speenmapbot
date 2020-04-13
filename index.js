@@ -22,7 +22,7 @@ bot.on('ready', () =>{
 bot.on('message', message => {
     let lowerCaseMessageContent = message.content.toLowerCase();
 
-    if (lowerCaseMessageContent.includes('mapping'||'mapped'||'mapper'||'mappers')) {
+    if (lowerCaseMessageContent.includes('map'||'mapping'||'mapped'||'mapper'||'mappers')) {
         message.react('🗺️');
     }
 
@@ -30,9 +30,6 @@ bot.on('message', message => {
        	message.react('📈');
     }
 
-    if (message.content.includes('map ' || ' map ')) {
-        message.react('🗺️');
-    }
   
     if (lowerCaseMessageContent.includes('speen')){
             message.react('695440682952687656');
