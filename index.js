@@ -60,7 +60,7 @@ bot.on('message', message => {
             message.react('699274566849265756');
         }
 
-    else if (lowerCaseMessageContent.startsWith('!search ') && message.channel.id == '638817716634910722') {
+    else if (lowerCaseMessageContent.startsWith('!search ')) {
         message.react('🔍');
         message.react('🎵');
         let searchterm = message.content.slice(8)
@@ -69,7 +69,7 @@ bot.on('message', message => {
                 GetSongData(songArray.songs, i, message);
             });
     }
-    else if (lowerCaseMessageContent.startsWith('!usearch ') && message.channel.id == '638817716634910722') {
+    else if (lowerCaseMessageContent.startsWith('!usearch ')) {
         message.react('🔍');
         let searchterm = message.content.slice(9)
             api.search(searchterm).then(function(userArray) {
