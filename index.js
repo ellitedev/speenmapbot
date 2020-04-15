@@ -18,6 +18,18 @@ bot.on('ready', () =>{
   channel.send("We're back up and speening!");
 })
 
+bot.on('message', (message)=>{
+    const messageWords = message.content.split(' ');
+    const rollFlavor = messageWords.slice(2).join(' ');
+    if (messageWords[0] === '!roll'){
+        if (messageWords.length === 1){
+            //!roll
+            return message.reply(
+                (Math.floor(Math.random() * 6) + 1) + ' ' + rollFlavor
+            );
+        }
+    }
+})
 
 bot.on('message', message => {
     let lowerCaseMessageContent = message.content.toLowerCase();
