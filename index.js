@@ -11,7 +11,7 @@ bot.login(token);
 
 bot.on('ready', () =>{
     console.log("We're rolling baby");
-    bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', { type: 'STREAMING' }, { url: 'https://spinsha.re/' })
+    bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', { type: 'STREAMING' }, { url: 'https://twitch.tv/spinshare' })
 .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
 .catch(console.error);
   const channel = bot.channels.cache.get('697732663045259334');
