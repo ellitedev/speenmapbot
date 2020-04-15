@@ -25,7 +25,7 @@ bot.on('message', (message)=>{
         if (messageWords.length === 1){
             //!roll
             return message.reply(
-                (Math.floor(Math.random() * 6) + 1) + ' ' + rollFlavor
+                (Math.floor(Math.random() * 50000) + 1) + ' ' + rollFlavor
             );
         }
     }
