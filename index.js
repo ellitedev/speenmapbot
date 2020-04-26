@@ -60,7 +60,7 @@ bot.on('message', message => {
             message.react('699274566849265756');
         }
 
-    if (lowerCaseMessageContent.includes('metalman' || 'metalman2020' || 'guitarman' || 'metal' || 'guitar')){
+    if (lowerCaseMessageContent.includes('metalman' || 'metalman20' || 'guitarman' || 'metal' || 'guitar' || '@metalman20')){
             message.react('704090735707685067');
     }
 
