@@ -60,6 +60,14 @@ bot.on('message', message => {
             message.react('699274566849265756');
         }
 
+    if (lowerCaseMessageContent.includes('metalman' || 'metalman2020' || 'guitarman')){
+            message.react('704090735707685067');
+    }
+
+    if (lowerCaseMessageContent.includes('trump')){
+            message.react('704087779193258005');
+    }
+
     else if (lowerCaseMessageContent.startsWith('!search ')) {
         message.react('🔍');
         message.react('🎵');
