@@ -69,7 +69,8 @@ bot.on('message', message => {
     }
 
     if (lowerCaseMessageContent.includes('how do i download customs' || 'how do i import customs')){
-        message.reply('Please read #faq')
+        message.reply("Please read " + 
+        message.guild.channels.get('642824638748950549').toString())
     }
 
     else if (lowerCaseMessageContent.startsWith('!search ')) {
