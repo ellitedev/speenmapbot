@@ -69,7 +69,8 @@ bot.on('message', message => {
     }
 
     if (lowerCaseMessageContent.includes('how do i download customs' || 'how do i import customs')){
-        message.reply('Please read #faq')
+        message.reply
+        var message = "Make sure to check the rules at <642824638748950549>";
     }
 
     else if (lowerCaseMessageContent.startsWith('!search ')) {
