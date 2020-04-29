@@ -60,7 +60,7 @@ bot.on('message', message => {
             message.react('699274566849265756');
         }
 
-    if (lowerCaseMessageContent.includes('metalman' || 'metalman20' || 'guitarman' || 'metal' || 'guitar' || '@metalman20')){
+    if (lowerCaseMessageContent.includes('metalman'||'metalman20'||'guitarman'||'metal'||'guitar'||'@metalman20')){
             message.react('704090735707685067');
     }
 
@@ -68,7 +68,7 @@ bot.on('message', message => {
             message.react('704087779193258005');
     }
 
-    if (lowerCaseMessageContent.includes('download custom' || 'import custom' || 'get custom' || 'where can i get custom' || 'how do i upload' || 'install custom' || 'what is this' || 'when is the tournament' || 'when are the qualifiers' || 'when are the finals')){
+    if (lowerCaseMessageContent.includes('download custom'||'import custom'||'get custom'||'where can i get custom'||'how do i upload'||'install custom'||'what is this'||'when is the tournament'||'when are the qualifiers'||'when are the finals')){
         message.reply("Please read the <#642824638748950549> channel");
     }
 
