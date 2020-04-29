@@ -68,6 +68,10 @@ bot.on('message', message => {
             message.react('704087779193258005');
     }
 
+    if (lowerCaseMessageContent.includes('how do i download customs' || 'how do i import customs')){
+        message.reply('Please read #faq')
+    }
+
     else if (lowerCaseMessageContent.startsWith('!search ')) {
         message.react('🔍');
         message.react('🎵');
