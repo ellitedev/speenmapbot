@@ -11,7 +11,7 @@ bot.login(token);
 
 bot.on('ready', () =>{
     console.log("We're rolling baby");
-    bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', { type: 'STREAMING' }, { url: 'https://twitch.tv/spinshare' })
+    bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', {type: 'STREAMING', url: 'https://twitch.tv/spinshare'})
 .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
 .catch(console.error);
   const channel = bot.channels.cache.get('697732663045259334');
@@ -68,7 +68,7 @@ bot.on('message', message => {
             message.react('704087779193258005');
     }
 
-    if (lowerCaseMessageContent.includes('how do i download customs' || 'how do i import customs')){
+    if (lowerCaseMessageContent.includes('download custom' || 'import custom' || 'get custom' || 'where can i get custom' || 'how do i upload' || 'install custom' || 'what is this' || 'when is the tournament' || 'when are the qualifiers' || 'when are the finals')){
         message.reply("Please read the <#642824638748950549> channel");
     }
 
