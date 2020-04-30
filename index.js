@@ -59,8 +59,9 @@ bot.on('message', message => {
     if (lowerCaseMessageContent.includes('mapy')){
             message.react('699274566849265756');
         }
-
-    if (lowerCaseMessageContent.includes('metalman'||'metalman20'||'guitarman'||'metal'||'guitar'||'@metalman20')){
+    
+    let metalman = ['metalman', 'metalman20', 'guitarman', 'metal', 'guitar', '<@!105429810158784512>']
+    if (metalman.some(el => lowerCaseMessageContent.includes(el))){
             message.react('704090735707685067');
     }
 
@@ -68,7 +69,8 @@ bot.on('message', message => {
             message.react('704087779193258005');
     }
 
-    if (lowerCaseMessageContent.includes('download custom'||'import custom'||'get custom'||'where can i get custom'||'how do i upload'||'install custom'||'what is this'||'when is the tournament'||'when are the qualifiers'||'when are the finals')){
+    let faq = ['download custom', 'import custom', 'get custom', 'where can i get custom', 'how do i upload', 'install custom', 'what is this', 'when is the tournament', 'when are the qualifiers', 'when are the finals']
+    if (faq.some(el => lowerCaseMessageContent.includes(el))){
         message.reply("Please read the <#642824638748950549> channel");
     }
 
