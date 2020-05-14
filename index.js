@@ -62,7 +62,7 @@ bot.on('message', message => {
             message.react('699274566849265756');
         }
     
-    let metalman = ['metalman', 'metalman20', 'guitarman', 'metal', 'guitar', '<@!105429810158784512>']
+    let metalman = ['metalman', 'guitarman', 'metal', 'guitar', '<@!105429810158784512>']
     if (metalman.some(el => lowerCaseMessageContent.includes(el))){
             message.react('704090735707685067');
     }
