@@ -1,6 +1,6 @@
+bot.login(token);
 const botconfig = require("./botconfig.json");
 const bot = new Discord.Client();
-bot.login(token);
 const token = process.env.token;
 const SSAPI = require('./assets/js/module.api.js');
 const emojiCharacters = require('./assets/js/module.emojis.js');
