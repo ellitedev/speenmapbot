@@ -1,21 +1,25 @@
 const botconfig = require("./botconfig.json");
+const bot = new Discord.Client();
 const token = process.env.token;
 const SSAPI = require('./assets/js/module.api.js');
 const emojiCharacters = require('./assets/js/module.emojis.js');
 var GetSongData = require('./assets/js/module.search.js');
 var GetUserData = require('./assets/js/module.searchuser.js');
-const fs = require('fs');
-const Discord = require('discord.js');
-const { prefix } = require('./botconfig.json');
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 let api = new SSAPI();
-for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	bot.commands.set(command.name, command);
+const fs = require('fs');
+const { prefix } = require(`./botconfig.json`);
+
+bot.commands = new Discord.Collectiion();
+
+const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith(`.js`));
+
+for (const file of commandFiles){
+    const command = require(`./commands/${file}`);
+    bot.commands.set(command.name, command);
 }
+
 bot.login(token);
-const bot = new Discord.Client();
-bot.commands = new Discord.Collection();
+
 
 bot.on('ready', () =>{
     console.log("We're rolling baby");
@@ -27,11 +31,16 @@ bot.on('ready', () =>{
 });
 
 bot.on('message', message => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-	const args = message.content.slice(prefix.length).split(/ +/);
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
+    const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-});
+
+	if (command === 'ping') {
+		message.channel.send('Pong.');
+	} else if (command === 'beep') {
+		message.channel.send('Boop.');
+	}
+})
 
 bot.on('message', message => {
     let lowerCaseMessageContent = message.content.toLowerCase();
@@ -61,7 +70,7 @@ bot.on('message', message => {
             message.react('699274566849265756');
         }
     
-    let metalman = ['metalman', 'guitarman', 'metal', 'guitar', '<@!105429810158784512>']
+    let metalman = ['metalman', 'metalman20', 'guitarman', 'metal', 'guitar', '<@!105429810158784512>']
     if (metalman.some(el => lowerCaseMessageContent.includes(el))){
             message.react('704090735707685067');
     }
