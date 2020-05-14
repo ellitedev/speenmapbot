@@ -7,25 +7,17 @@ const emojiCharacters = require('./assets/js/module.emojis.js');
 var GetSongData = require('./assets/js/module.search.js');
 var GetUserData = require('./assets/js/module.searchuser.js');
 let api = new SSAPI();
-const fs = require("fs");
+const fs = require('fs');
+const { prefix, token } = require('./config.json');
+
 bot.commands = new Discord.Collection();
 
-fs.readdir("./commands/", (err, files) => {
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-    if(err) console.log(err);
-
-    let jsfile = files.filter(f => f.split(".").pop() === "js")
-    if(jsfile.length = 0){
-    console.log("Couldn't find commands.");
-    return;
-    }
-
-    jsfile.forEach((f, i) =>{
-        let props = require(`./commands/${f}`);
-        console.log(`${f} loaded!`);
-        bot.commands.set(props.help.name, props);
-    });
-});
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	bot.commands.set(command.name, command);
+}
 
 bot.login(token);
 
@@ -37,20 +29,6 @@ bot.on('ready', () =>{
   const channel = bot.channels.cache.get('697732663045259334');
   channel.send("We're back up and speening!");
 });
-
-const fs = require('fs');
-const Discord = require('discord.js');
-const { prefix, token } = require('./config.json');
-
-const client = new Discord.Client();
-client.commands = new Discord.Collection();
-
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	client.commands.set(command.name, command);
-};
 
 bot.on('message', (message)=>{
     const messageWords = message.content.split(' ');
