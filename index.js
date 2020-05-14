@@ -1,5 +1,4 @@
 const botconfig = require("./botconfig.json");
-const bot = new Discord.Client();
 const token = process.env.token;
 const SSAPI = require('./assets/js/module.api.js');
 const emojiCharacters = require('./assets/js/module.emojis.js');
@@ -33,6 +32,7 @@ bot.on('message', message => {
 });
 
 bot.login(token);
+const bot = new Discord.Client();
 
 bot.on('message', message => {
     let lowerCaseMessageContent = message.content.toLowerCase();
