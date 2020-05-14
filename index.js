@@ -7,6 +7,8 @@ const emojiCharacters = require('./assets/js/module.emojis.js');
 var GetSongData = require('./assets/js/module.search.js');
 var GetUserData = require('./assets/js/module.searchuser.js');
 let api = new SSAPI();
+const fs = require("fs");
+bot.commands = new Discord.Collection();
 
 bot.login(token);
 
@@ -17,7 +19,24 @@ bot.on('ready', () =>{
 .catch(console.error);
   const channel = bot.channels.cache.get('697732663045259334');
   channel.send("We're back up and speening!");
-})
+});
+
+fs.readdir("./commands/", (err, files) => {
+
+    if(err) console.log(err);
+
+    let jsfile = files.filter(f => f.split(".").pop() === "js")
+    if(jsfile.length = 0){
+    console.log("Couldn't find commands.");
+    return;
+    }
+
+    jsfile.forEach((f, i) =>{
+        let props = require(`./commands/${f}`);
+        console.log(`${f} loaded!`);
+        bot.commands.set(props.help.name, props);
+    });
+});
 
 bot.on('message', (message)=>{
     const messageWords = message.content.split(' ');
@@ -30,6 +49,17 @@ bot.on('message', (message)=>{
             );
         }
     }
+})
+
+bot.on("message", async message => {
+    if(message.author.bot) return;
+    if(message.channel.type === "dm") return;
+
+    let prefix = botconfig.prefix;
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = messageArray.slice(1);
+
 })
 
 bot.on('message', message => {
