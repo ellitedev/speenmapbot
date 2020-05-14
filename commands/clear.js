@@ -1,7 +1,3 @@
-module.exports.run = async (bot, message, args) => {
-    console.log("works");
-}
-
 module.exports = {
     name: "clear",
     aliases: ["purge", "nuke"],
