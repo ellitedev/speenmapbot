@@ -1,5 +1,4 @@
 const botconfig = require("./botconfig.json");
-const bot = new Discord.Client();
 const token = process.env.token;
 const SSAPI = require('./assets/js/module.api.js');
 const emojiCharacters = require('./assets/js/module.emojis.js');
@@ -16,6 +15,7 @@ for (const file of commandFiles) {
 	bot.commands.set(command.name, command);
 }
 bot.login(token);
+const bot = new Discord.Client();
 
 bot.on('ready', () =>{
     console.log("We're rolling baby");
