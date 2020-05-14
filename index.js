@@ -1,25 +1,20 @@
 const botconfig = require("./botconfig.json");
-const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = process.env.token;
-const prefix = require('./botconfig.json');
 const SSAPI = require('./assets/js/module.api.js');
 const emojiCharacters = require('./assets/js/module.emojis.js');
 var GetSongData = require('./assets/js/module.search.js');
 var GetUserData = require('./assets/js/module.searchuser.js');
-let api = new SSAPI();
-const fs = require("fs");
+const fs = require('fs');
+const Discord = require('discord.js');
+const { prefix } = require('./botconfig.json');
 bot.commands = new Discord.Collection();
-bot.login(token);
-
-bot.commands = new Discord.Collection();
-
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-
+let api = new SSAPI();
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	bot.commands.set(command.name, command);
-};
+}
 
 bot.on('ready', () =>{
     console.log("We're rolling baby");
@@ -30,18 +25,14 @@ bot.on('ready', () =>{
   channel.send("We're back up and speening!");
 });
 
-bot.on('message', (message)=>{
-    const messageWords = message.content.split(' ');
-    const rollFlavor = messageWords.slice(1).join(' ');
-    if (messageWords[0] === '!roll'){
-        if (messageWords.length >= 1){
-            //!roll
-            return message.reply(
-                (Math.floor(Math.random() * 100) + 1) + ' ' + rollFlavor
-            );
-        }
-    }
+bot.on('message', message => {
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+	const args = message.content.slice(prefix.length).split(/ +/);
+	const command = args.shift().toLowerCase();
 });
+
+bot.login(token);
 
 bot.on('message', message => {
     let lowerCaseMessageContent = message.content.toLowerCase();
