@@ -8,7 +8,7 @@ var GetSongData = require('./assets/js/module.search.js');
 var GetUserData = require('./assets/js/module.searchuser.js');
 let api = new SSAPI();
 const fs = require('fs');
-const { prefix } = require(`./botconfig.json`);
+const { prefix } = require('./botconfig.json');
 
 bot.commands = new Discord.Collection();
 
