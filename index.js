@@ -1,4 +1,3 @@
-bot.login(token);
 const botconfig = require("./botconfig.json");
 const bot = new Discord.Client();
 const token = process.env.token;
@@ -16,6 +15,7 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	bot.commands.set(command.name, command);
 }
+bot.login(token);
 
 bot.on('ready', () =>{
     console.log("We're rolling baby");
