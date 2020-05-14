@@ -9,7 +9,7 @@ let api = new SSAPI();
 const fs = require('fs');
 const { prefix } = require(`./botconfig.json`);
 
-bot.commands = new Discord.Collectiion();
+bot.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith(`.js`));
 
