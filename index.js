@@ -9,13 +9,14 @@ const Discord = require('discord.js');
 const { prefix } = require('./botconfig.json');
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 let api = new SSAPI();
-bot.login(token);
-const bot = new Discord.Client();
-bot.commands = new Discord.Collection();
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	bot.commands.set(command.name, command);
 }
+bot.login(token);
+const bot = new Discord.Client();
+bot.commands = new Discord.Collection();
+
 bot.on('ready', () =>{
     console.log("We're rolling baby");
     bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', {type: 'STREAMING', url: 'https://twitch.tv/spinshare'})
