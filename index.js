@@ -7,7 +7,6 @@ var GetUserData = require('./assets/js/module.searchuser.js');
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix } = require('./botconfig.json');
-bot.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 let api = new SSAPI();
 for (const file of commandFiles) {
@@ -16,6 +15,7 @@ for (const file of commandFiles) {
 }
 bot.login(token);
 const bot = new Discord.Client();
+bot.commands = new Discord.Collection();
 
 bot.on('ready', () =>{
     console.log("We're rolling baby");
