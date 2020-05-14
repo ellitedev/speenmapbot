@@ -1,7 +1,7 @@
+const botconfig = require("./botconfig.json");
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = process.env.token;
-const prefix = process.env.prefix;
+
 const SSAPI = require('./assets/js/module.api.js');
 const emojiCharacters = require('./assets/js/module.emojis.js');
 var GetSongData = require('./assets/js/module.search.js');
