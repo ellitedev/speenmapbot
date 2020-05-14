@@ -10,17 +10,6 @@ let api = new SSAPI();
 const fs = require("fs");
 bot.commands = new Discord.Collection();
 
-bot.login(token);
-
-bot.on('ready', () =>{
-    console.log("We're rolling baby");
-    bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', {type: 'STREAMING', url: 'https://twitch.tv/spinshare'})
-.then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
-.catch(console.error);
-  const channel = bot.channels.cache.get('697732663045259334');
-  channel.send("We're back up and speening!");
-});
-
 fs.readdir("./commands/", (err, files) => {
 
     if(err) console.log(err);
@@ -38,6 +27,30 @@ fs.readdir("./commands/", (err, files) => {
     });
 });
 
+bot.login(token);
+
+bot.on('ready', () =>{
+    console.log("We're rolling baby");
+    bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', {type: 'STREAMING', url: 'https://twitch.tv/spinshare'})
+.then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
+.catch(console.error);
+  const channel = bot.channels.cache.get('697732663045259334');
+  channel.send("We're back up and speening!");
+});
+
+bot.on("message", async message => {
+    if(message.author.bot) return;
+    if(message.channel.type === "dm") return;
+
+    let prefix = botconfig.prefix;
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = messageArray.slice(1);
+
+    let commandfile = bot.commands.get(cmd.slice(prefix.length));
+    if(commandfile) commandfile.run(bot,message,args);
+});
+
 bot.on('message', (message)=>{
     const messageWords = message.content.split(' ');
     const rollFlavor = messageWords.slice(1).join(' ');
@@ -49,18 +62,7 @@ bot.on('message', (message)=>{
             );
         }
     }
-})
-
-bot.on("message", async message => {
-    if(message.author.bot) return;
-    if(message.channel.type === "dm") return;
-
-    let prefix = botconfig.prefix;
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.slice(1);
-
-})
+});
 
 bot.on('message', message => {
     let lowerCaseMessageContent = message.content.toLowerCase();
