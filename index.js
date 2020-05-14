@@ -2,13 +2,15 @@ const botconfig = require("./botconfig.json");
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = process.env.token;
+const prefix = require('./botconfig.json');
 const SSAPI = require('./assets/js/module.api.js');
 const emojiCharacters = require('./assets/js/module.emojis.js');
 var GetSongData = require('./assets/js/module.search.js');
 var GetUserData = require('./assets/js/module.searchuser.js');
 let api = new SSAPI();
-const fs = require('fs');
-const {prefix} = require('./botconfig.json');
+const fs = require("fs");
+bot.commands = new Discord.Collection();
+bot.login(token);
 
 bot.commands = new Discord.Collection();
 
@@ -17,9 +19,7 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	bot.commands.set(command.name, command);
-}
-
-bot.login(token);
+};
 
 bot.on('ready', () =>{
     console.log("We're rolling baby");
