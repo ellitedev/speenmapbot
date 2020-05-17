@@ -41,9 +41,11 @@ bot.on('message', message => {
 	} else if (command === 'beep') {
 		message.channel.send('Boop.');
 	}
-})
 
-bot.on('message', message => {
+    // Above is old command handling code, this is a make shift merging of the two that (hopefully) works
+
+    // TODO: ORGANISE ALL THIS, the tech debt is gonna be huge if we continue like this.
+
     let lowerCaseMessageContent = message.content.toLowerCase();
 
     if (lowerCaseMessageContent.includes('map', 'mapping', 'mapped', 'mapper', 'mappers')) {
