@@ -46,11 +46,11 @@ bot.on('message', message => {
 bot.on('message', message => {
     let lowerCaseMessageContent = message.content.toLowerCase();
 
-    if (lowerCaseMessageContent.includes('map'||'mapping'||'mapped'||'mapper'||'mappers')) {
+    if (lowerCaseMessageContent.includes('map', 'mapping', 'mapped', 'mapper', 'mappers')) {
         message.react('🗺️');
     }
 
-    if (lowerCaseMessageContent.includes('chart'||'charting'||'charted'||'charter'||'charters')) {
+    if (lowerCaseMessageContent.includes('chart', 'charting', 'charted', 'charter', 'charters')) {
        	message.react('📈');
     }
 
