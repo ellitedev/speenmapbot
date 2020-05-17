@@ -52,7 +52,7 @@ bot.on('message', message => {
     // limitedMode disables everything that is not fired manually (Primarily meme roles)
     // Something tells me this should be booleanified using !!, that'll come later though. (Done now)
 
-    let limitedMode = !!(message.member.roles.find(r => r.name === limitedRoleName));
+    let limitedMode = !!(message.member.roles.cache.find(r => r.name === limitedRoleName));
 
     let lowerCaseMessageContent = message.content.toLowerCase();
 
