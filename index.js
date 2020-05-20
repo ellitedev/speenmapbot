@@ -35,15 +35,15 @@ bot.on('ready', () =>{
 });
 
 bot.on('message', message => {
-    if (!message.content.startsWith(prefix) || message.author.bot) return;
-    const args = message.content.slice(prefix.length).split(/ +/);
-	const command = args.shift().toLowerCase();
+    // if (!message.content.startsWith(prefix) || message.author.bot) return;
+    // const args = message.content.slice(prefix.length).split(/ +/);
+	// const command = args.shift().toLowerCase();
 
-	if (command === 'ping') {
-		message.channel.send('Pong.');
-	} else if (command === 'beep') {
-		message.channel.send('Boop.');
-    }
+	// if (command === 'ping') {
+	// 	message.channel.send('Pong.');
+	// } else if (command === 'beep') {
+	// 	message.channel.send('Boop.');
+    // }
 
     // Above is old command handling code, this is a make shift merging of the two that (hopefully) works
 
@@ -52,7 +52,7 @@ bot.on('message', message => {
     // limitedMode disables everything that is not fired manually (Primarily meme roles)
     // Something tells me this should be booleanified using !!, that'll come later though. (Done now)
 
-    let limitedMode = !!(message.member.roles.find(r => r.name === limitedRoleName));
+    let limitedMode = !!(message.member.roles.cache.find(r => r.name === limitedRoleName));
 
     let lowerCaseMessageContent = message.content.toLowerCase();
 
