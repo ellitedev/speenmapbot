@@ -104,7 +104,7 @@ bot.on('message', message => {
         let searchterm = message.content.slice(8)
             api.search(searchterm).then(function(songArray) {
                 let i = 0;
-                GetSongData(songArray.songs, i, message);
+                GetSongData(songArray.data.songs, i, message);
             });
     }
     else if (lowerCaseMessageContent.startsWith('!usearch ')) {
@@ -112,7 +112,7 @@ bot.on('message', message => {
         let searchterm = message.content.slice(9)
             api.search(searchterm).then(function(userArray) {
                 let i = 0;
-                GetUserData(userArray.users, i, message);
+                GetUserData(userArray.data.users, i, message);
             });
     }
 });
