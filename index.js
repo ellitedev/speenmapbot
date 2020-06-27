@@ -93,7 +93,7 @@ bot.on('message', message => {
         }
     }
 
-    let faq = ['download custom', 'import custom', 'get custom', 'where can i get custom', 'how do i upload', 'install custom', 'what is this', 'when is the tournament', 'when are the qualifiers', 'when are the finals']
+    let faq = ['download custom', 'invite', 'import custom', 'get custom', 'where can i get custom', 'how do i upload', 'install custom', 'what is this', 'when is the tournament', 'when are the qualifiers', 'when are the finals']
     if (faq.some(el => lowerCaseMessageContent.includes(el))){
         message.reply("Please read the <#642824638748950549> channel");
     }
