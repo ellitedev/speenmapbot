@@ -1,14 +1,46 @@
-//this api is taken directly from the spinsha.re client, and modified a little. Attribution of original source: https://github.com/AndreasWebdev/spinshare-client/blob/master/src/assets/js/module.api.js
 const axios = require('axios');
 
-class SHAPI {
-    constructor() {
-            this.apiBase = "https://spinsha.re/api/";
+class SSAPI {
+    constructor(isDev) {
+
+        this.apiBase = "https://spinsha.re/api/";
         this.supportedVersion = 1;
     }
 
     async ping() {
         let apiPath = this.apiBase + "ping";
+        let supportedVersion = this.supportedVersion;
+
+        return axios.get(apiPath)
+        .then(function(response) {
+            if(response.data.version !== supportedVersion) {
+                throw new Error("Client is outdated!");
+            }
+
+            return response.data.data;
+        }).catch(function(error) {
+            throw new Error(error);
+        });
+    }
+
+    async getStreamStatus() {
+        let apiPath = this.apiBase + "streamStatus";
+        let supportedVersion = this.supportedVersion;
+
+        return axios.get(apiPath)
+        .then(function(response) {
+            if(response.data.version !== supportedVersion) {
+                throw new Error("Client is outdated!");
+            }
+
+            return response.data.data;
+        }).catch(function(error) {
+            throw new Error(error);
+        });
+    }
+
+    async getLatestVersion() {
+        let apiPath = this.apiBase + "latestVersion/" + process.platform;
         let supportedVersion = this.supportedVersion;
 
         return axios.get(apiPath)
@@ -71,6 +103,22 @@ class SHAPI {
         });
     }
 
+    async getHotSongs(_offset) {
+        let apiPath = this.apiBase + "songs/hot/" + _offset;
+        let supportedVersion = this.supportedVersion;
+
+        return axios.get(apiPath)
+        .then(function(response) {
+            if(response.data.version !== supportedVersion) {
+                throw new Error("Client is outdated!");
+            }
+            
+            return response.data.data;
+        }).catch(function(error) {
+            throw new Error(error);
+        });
+    }
+
     async getPopularSongs(_offset) {
         let apiPath = this.apiBase + "songs/popular/" + _offset;
         let supportedVersion = this.supportedVersion;
@@ -103,8 +151,56 @@ class SHAPI {
         });
     }
 
+    async getSongDetailReviews(_songId) {
+        let apiPath = this.apiBase + "song/" + _songId + "/reviews";
+        let supportedVersion = this.supportedVersion;
+
+        return axios.get(apiPath)
+        .then(function(response) {
+            if(response.data.version !== supportedVersion) {
+                throw new Error("Client is outdated!");
+            }
+            
+            return response.data;
+        }).catch(function(error) {
+            throw new Error(error);
+        });
+    }
+
+    async getSongDetailSpinPlays(_songId) {
+        let apiPath = this.apiBase + "song/" + _songId + "/spinplays";
+        let supportedVersion = this.supportedVersion;
+
+        return axios.get(apiPath)
+        .then(function(response) {
+            if(response.data.version !== supportedVersion) {
+                throw new Error("Client is outdated!");
+            }
+            
+            return response.data;
+        }).catch(function(error) {
+            throw new Error(error);
+        });
+    }
+
     async getUserDetail(_userId) {
         let apiPath = this.apiBase + "user/" + _userId;
+        let supportedVersion = this.supportedVersion;
+
+        return axios.get(apiPath)
+        .then(function(response) {
+            if(response.data.version !== supportedVersion) {
+                throw new Error("Client is outdated!");
+            }
+            
+            return response.data;
+        }).catch(function(error) {
+            throw new Error(error);
+        });
+    }
+
+    async searchAll() {
+        let apiPath = this.apiBase + "searchAll";
         let supportedVersion = this.supportedVersion;
 
         return axios.get(apiPath)
@@ -128,11 +224,12 @@ class SHAPI {
             if(response.data.version !== supportedVersion) {
                 throw new Error("Client is outdated!");
             }
-            return response.data.data;
-
+            
+            return response.data;
         }).catch(function(error) {
             throw new Error(error);
         });
     }
 }
-module.exports = SHAPI;
+
+module.exports = SSAPI;
