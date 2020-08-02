@@ -34,6 +34,19 @@ bot.on('ready', () =>{
   channel.send("We're back up and speening!");
 });
 
+bot.on('message', (message)=>{
+    const messageWords = message.content.split(' ');
+    const rollFlavor = messageWords.slice(2).join(' ');
+    if (messageWords[0] === '!roll'){
+        if (messageWords.length >= 1){
+            //!roll
+            return message.reply(
+                (Math.floor(Math.random() * 100) + 1) + ' ' + rollFlavor
+            );
+        }
+    }
+})
+
 bot.on('message', message => {
     // if (!message.content.startsWith(prefix) || message.author.bot) return;
     // const args = message.content.slice(prefix.length).split(/ +/);
@@ -91,11 +104,6 @@ bot.on('message', message => {
         if (lowerCaseMessageContent.includes('trump')){
                 message.react('704087779193258005');
         }
-        
-        if (lowerCaseMessageContent.startsWith('!roll')) {
-        message.channel.send(message.author.username + ' rolled a ' + (Math.round(Math.random() * (args[1] - 1) + 1)));
-        }
-
     }
 
     let faq = ['download custom', 'invite', 'import custom', 'get custom', 'where can i get custom', 'how do i upload', 'install custom', 'what is this', 'when is the tournament', 'when are the qualifiers', 'when are the finals']
