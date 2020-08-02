@@ -36,7 +36,7 @@ bot.on('ready', () =>{
 
 bot.on('message', (message)=>{
     const messageWords = message.content.split(' ');
-    const rollFlavor = messageWords.slice(2).join(' ');
+    const rollFlavor = messageWords.slice(1).join(' ');
     if (messageWords[0] === '!roll'){
         if (messageWords.length >= 1){
             //!roll
