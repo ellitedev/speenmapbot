@@ -98,6 +98,10 @@ bot.on('message', message => {
         message.reply("Please read the <#642824638748950549> channel");
     }
 
+    else if (lowerCaseMessageContent.startsWith('!roll')) {
+        message.channel.send(message.author.username + ' rolled a ' + (Math.round(Math.random() * (args[1] - 1) + 1)));
+    }
+
     else if (lowerCaseMessageContent.startsWith('!search ')) {
         message.react('🔍');
         message.react('🎵');
