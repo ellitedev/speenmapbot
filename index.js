@@ -30,8 +30,11 @@ bot.on('ready', () =>{
     bot.user.setActivity('speeeeeeeeeeeeeeeeeeen', {type: 'STREAMING', url: 'https://twitch.tv/spinshare'})
 .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
 .catch(console.error);
-  const channel = bot.channels.cache.get('697732663045259334');
-  channel.send("We're back up and speening!");
+try {
+    const channel = bot.channels.cache.get('697732663045259334');
+    channel.send("We're back up and speening!");
+}
+catch {} 
 });
 
 bot.on('message', (message)=>{
@@ -64,8 +67,16 @@ bot.on('message', message => {
 
     // limitedMode disables everything that is not fired manually (Primarily meme roles)
     // Something tells me this should be booleanified using !!, that'll come later though. (Done now)
-
-    let limitedMode = !!(message.member.roles.cache.find(r => r.name === limitedRoleName));
+    let limitedBoolCalc;
+    try {
+        limitedBoolCalc = message.member.roles.cache.find(r => r.name === limitedRoleName)
+    }
+    catch(err) {
+        limitedBoolCalc = false;
+        console.log("error: "+err)
+    }
+    
+    let limitedMode = Boolean(limitedBoolCalc)
 
     let lowerCaseMessageContent = message.content.toLowerCase();
 
