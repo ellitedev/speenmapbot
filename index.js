@@ -11,7 +11,7 @@ const fs = require('fs');
 const { prefix } = require('./botconfig.json');
 
 // TODO: ELLITE, change this to the role name of limitedmode, else weebs will be confused
-const limitedRoleName = "limiter"
+const limitedRoleName = "714716033763770448"
 
 bot.commands = new Discord.Collection();
 
