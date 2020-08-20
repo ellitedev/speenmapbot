@@ -94,8 +94,9 @@ bot.on('message', message => {
             message.react('745814454788292680');
         }
 
-        if (lowerCaseMessageContent.includes('blade', 'kali')) {
-            message.react('745817406265360384');
+        let kali = ['blade', 'kali']
+        if (kali.some(el => lowerCaseMessageContent.includes(el))){
+                message.react('745817406265360384');
         }
 
         if (lowerCaseMessageContent.includes('map', 'mapping', 'mapped', 'mapper', 'mappers')) {
