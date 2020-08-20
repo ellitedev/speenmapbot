@@ -82,6 +82,22 @@ bot.on('message', message => {
 
     if (!limitedMode) {
 
+        if (lowerCaseMessageContent.includes('way', 'theway')) {
+            message.react('745814454901407816');
+        }
+
+        if (lowerCaseMessageContent.includes('trex')) {
+            message.react('745814455677354054');
+        }
+        
+        if (lowerCaseMessageContent.includes('ambi', 'ambulance')) {
+            message.react('745814454788292680');
+        }
+
+        if (lowerCaseMessageContent.includes('blade', 'kali')) {
+            message.react('745817406265360384');
+        }
+
         if (lowerCaseMessageContent.includes('map', 'mapping', 'mapped', 'mapper', 'mappers')) {
             message.react('🗺️');
         }
@@ -114,6 +130,7 @@ bot.on('message', message => {
 
         if (lowerCaseMessageContent.includes('trump')){
                 message.react('704087779193258005');
+                message.react('745814455677354054');
         }
     }
 
