@@ -112,7 +112,7 @@ bot.on('message', message => {
                 message.react('704090735707685067');
         }
         
-        let way = ['way', 'theway']
+        let way = ['way', 'theway', 'honestly']
         if (way.some(el => lowerCaseMessageContent.includes(el))){
                 message.react('745814454901407816');
         }
