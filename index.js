@@ -82,23 +82,6 @@ bot.on('message', message => {
 
     if (!limitedMode) {
 
-        if (lowerCaseMessageContent.includes('way', 'theway')) {
-            message.react('745814454901407816');
-        }
-
-        if (lowerCaseMessageContent.includes('trex')) {
-            message.react('745814455677354054');
-        }
-        
-        if (lowerCaseMessageContent.includes('ambi', 'ambulance')) {
-            message.react('745814454788292680');
-        }
-
-        let kali = ['blade', 'kali']
-        if (kali.some(el => lowerCaseMessageContent.includes(el))){
-                message.react('745817406265360384');
-        }
-
         if (lowerCaseMessageContent.includes('map', 'mapping', 'mapped', 'mapper', 'mappers')) {
             message.react('🗺️');
         }
@@ -127,6 +110,26 @@ bot.on('message', message => {
         let metalman = ['metalman', 'metalman20', 'guitarman', 'metal', 'guitar', '<@!105429810158784512>']
         if (metalman.some(el => lowerCaseMessageContent.includes(el))){
                 message.react('704090735707685067');
+        }
+        
+        let way = ['way', 'theway']
+        if (way.some(el => lowerCaseMessageContent.includes(el))){
+                message.react('745814454901407816');
+        }
+
+        let trex = ['trex']
+        if (trex.some(el => lowerCaseMessageContent.includes(el))){
+                message.react('745814455677354054');
+        }
+        
+        let ambi = ['ambi', 'ambulance']
+        if (ambi.some(el => lowerCaseMessageContent.includes(el))){
+                message.react('745814454788292680');
+        }
+        
+        let kali = ['blade', 'kali']
+        if (kali.some(el => lowerCaseMessageContent.includes(el))){
+                message.react('745817406265360384');
         }
 
         if (lowerCaseMessageContent.includes('trump')){
