@@ -53,17 +53,17 @@ bot.on("message", (message) => {
   }
 });
 
+bot.on("message", (message) => {
+  // TODO: ORGANISE ALL THIS, the tech debt is gonna be huge if we continue like this.
+  let lowerCaseMessageContent = message.content.toLowerCase();
+
     if (
       lowerCaseMessageContent.includes(
         "pog"
       )
     ) {
       message.react("779906602370596875");
-};
-
-bot.on("message", (message) => {
-  // TODO: ORGANISE ALL THIS, the tech debt is gonna be huge if we continue like this.
-  let lowerCaseMessageContent = message.content.toLowerCase();
+  };
 
   let faq = [
     "download custom",
