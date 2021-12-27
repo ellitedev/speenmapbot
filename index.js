@@ -36,7 +36,7 @@ bot.on("ready", () => {
     .catch(console.error);
   try {
     const channel = bot.channels.cache.get("697732663045259334");
-    channel.send("We're back up and speening!");
+    channel.send("We're back up and speening! NOW EXTRA HARD!");
   } catch {}
 });
 
@@ -57,19 +57,12 @@ bot.on("message", (message) => {
   // TODO: ORGANISE ALL THIS, the tech debt is gonna be huge if we continue like this.
   let lowerCaseMessageContent = message.content.toLowerCase();
 
-    if (
-      lowerCaseMessageContent.includes(
-        "pog"
-      )
-    ) {
-      message.react("779906602370596875");
-  };
+  if (lowerCaseMessageContent.includes("pog")) {
+    message.react("779906602370596875");
+  }
 
   let faq = [
     "download custom",
-    "are there custom leaderboards",
-    "are there leaderboards",
-    "custom leaderboard",
     "import custom",
     "get custom",
     "where can i get custom",
