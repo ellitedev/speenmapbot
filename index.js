@@ -60,6 +60,9 @@ bot.on("message", (message) => {
   if (lowerCaseMessageContent.includes("pog")) {
     message.react("779906602370596875");
   }
+  if (lowercaseMessage.includes("sus")) {
+    message.react("925122035523387402");
+  }
 
   let faq = [
     "download custom",
