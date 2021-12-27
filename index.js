@@ -59,6 +59,8 @@ bot.on("message", (message) => {
 
   if (lowerCaseMessageContent.includes("pog")) {
     message.react("779906602370596875");
+  } else if (lowerCaseMessageContent.includes("sus")) {
+    message.react("802017618105466920");
   }
 
   let faq = [
