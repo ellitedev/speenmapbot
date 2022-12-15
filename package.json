@@ -1,6 +1,6 @@
 {
   "name": "discordbot",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,10 @@
   "author": "Ellite",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "discord.js": "^12.2.0",
-    "nodemon": "^2.0.4"
+    "axios": "^1.2.1",
+    "discord.js": "^12.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
   }
 }

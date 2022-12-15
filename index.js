@@ -1,15 +1,13 @@
-// hello :)
 const Discord = require("discord.js");
-const botconfig = require("./botconfig.json");
+require("dotenv").config();
 const bot = new Discord.Client();
-const token = process.env.token;
 const SSAPI = require("./assets/js/module.api.js");
 const emojiCharacters = require("./assets/js/module.emojis.js");
 var GetSongData = require("./assets/js/module.search.js");
 var GetUserData = require("./assets/js/module.searchuser.js");
 let api = new SSAPI();
 const fs = require("fs");
-const { prefix } = require("./botconfig.json");
+const prefix = process.env.PREFIX;
 
 bot.commands = new Discord.Collection();
 
@@ -22,7 +20,7 @@ for (const file of commandFiles) {
   bot.commands.set(command.name, command);
 }
 
-bot.login(token);
+bot.login();
 
 bot.on("ready", () => {
   console.log("We're rolling baby");
