@@ -2,12 +2,11 @@ const Discord = require("discord.js");
 require("dotenv").config();
 const bot = new Discord.Client();
 const SSAPI = require("./assets/js/module.api.js");
-const emojiCharacters = require("./assets/js/module.emojis.js");
-var GetSongData = require("./assets/js/module.search.js");
-var GetUserData = require("./assets/js/module.searchuser.js");
-let api = new SSAPI();
+const GetSongData = require("./assets/js/module.search.js");
+const GetUserData = require("./assets/js/module.searchuser.js");
+const api = new SSAPI();
 const fs = require("fs");
-const prefix = process.env.PREFIX;
+const { error } = require("console");
 
 bot.commands = new Discord.Collection();
 
@@ -25,18 +24,20 @@ bot.login();
 bot.on("ready", () => {
   console.log("We're rolling baby");
   bot.user
-    .setActivity("speeeeeeeeeeeeeeeeeeen", {
+    .setActivity("speen :3", {
       type: "STREAMING",
       url: "https://twitch.tv/spinshare",
     })
     .then((presence) =>
       console.log(`Activity set to ${presence.activities[0].name}`)
     )
-    .catch(console.error);
+    .catch((error) => console.error(error));
   try {
     const channel = bot.channels.cache.get("697732663045259334");
-    channel.send("We're back up and speening! NOW EXTRA HARD!");
-  } catch {}
+    channel.send("We're back up and spinning! NOW EXTRA HARD! :3");
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 bot.on("message", (message) => {
@@ -44,7 +45,7 @@ bot.on("message", (message) => {
   const rollFlavor = messageWords.slice(1).join(" ");
   if (messageWords[0] === "!roll") {
     if (messageWords.length >= 1) {
-      //!roll
+      // !roll
       return message.reply(
         Math.floor(Math.random() * 100) + 1 + " " + rollFlavor
       );
@@ -54,7 +55,7 @@ bot.on("message", (message) => {
 
 bot.on("message", (message) => {
   // TODO: ORGANISE ALL THIS, the tech debt is gonna be huge if we continue like this.
-  let lowerCaseMessageContent = message.content.toLowerCase();
+  const lowerCaseMessageContent = message.content.toLowerCase();
 
   if (lowerCaseMessageContent.includes("pog")) {
     message.react("779906602370596875");
@@ -62,7 +63,7 @@ bot.on("message", (message) => {
     message.react("802017618105466920");
   }
 
-  let faq = [
+  const faq = [
     "download custom",
     "import custom",
     "get custom",
@@ -80,16 +81,16 @@ bot.on("message", (message) => {
   } else if (lowerCaseMessageContent.startsWith("!search ")) {
     message.react("🔍");
     message.react("🎵");
-    let searchterm = message.content.slice(8);
+    const searchterm = message.content.slice(8);
     api.search(searchterm).then(function (songArray) {
-      let i = 0;
+      const i = 0;
       GetSongData(songArray.data.songs, i, message);
     });
   } else if (lowerCaseMessageContent.startsWith("!usearch ")) {
     message.react("🔍");
-    let searchterm = message.content.slice(9);
+    const searchterm = message.content.slice(9);
     api.search(searchterm).then(function (userArray) {
-      let i = 0;
+      const i = 0;
       GetUserData(userArray.data.users, i, message);
     });
   }
