@@ -22,4 +22,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/speenmapbot:latest
