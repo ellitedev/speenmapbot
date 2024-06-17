@@ -23,3 +23,5 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/speenmapbot:latest
+      - name: Trigger Portainer webhook
+        run: curl -X POST "https://portainer.ellite.dev/api/stacks/webhooks/c5f2c8bc-6004-420b-9b86-fab28681d7f5"
