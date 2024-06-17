@@ -1,6 +1,0 @@
-version: "3"
-services:
-  speenmapbot:
-    image: ellite/speenmapbot
-    container_name: mapbot
-    restart: unless-stopped
