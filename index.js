@@ -57,12 +57,6 @@ bot.on("message", (message) => {
   // TODO: ORGANISE ALL THIS, the tech debt is gonna be huge if we continue like this.
   const lowerCaseMessageContent = message.content.toLowerCase();
 
-  if (lowerCaseMessageContent.includes("pog")) {
-    message.react("779906602370596875");
-  } else if (lowerCaseMessageContent.includes("sus")) {
-    message.react("802017618105466920");
-  }
-
   const faq = [
     "download custom",
     "import custom",
