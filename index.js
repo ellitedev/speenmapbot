@@ -1,5 +1,4 @@
 const { Client, GatewayIntentBits, Collection } = require("discord.js");
-require("dotenv").config();
 const SSAPI = require("./assets/js/module.api.js");
 const GetSongData = require("./assets/js/module.search.js");
 const GetUserData = require("./assets/js/module.searchuser.js");
