@@ -1,14 +1,21 @@
-const Discord = require("discord.js");
+const { Client, GatewayIntentBits, Collection } = require("discord.js");
 require("dotenv").config();
-const bot = new Discord.Client();
 const SSAPI = require("./assets/js/module.api.js");
 const GetSongData = require("./assets/js/module.search.js");
 const GetUserData = require("./assets/js/module.searchuser.js");
 const api = new SSAPI();
 const fs = require("fs");
-const { error } = require("console");
 
-bot.commands = new Discord.Collection();
+const bot = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.MessageContent,
+  ],
+});
+
+bot.commands = new Collection();
 
 const commandFiles = fs
   .readdirSync("./commands")
@@ -19,13 +26,13 @@ for (const file of commandFiles) {
   bot.commands.set(command.name, command);
 }
 
-bot.login();
+bot.login(process.env.DISCORD_TOKEN);
 
 bot.on("ready", () => {
   console.log("We're rolling baby");
   bot.user
     .setActivity("speen :3", {
-      type: "STREAMING",
+      type: 1,
       url: "https://twitch.tv/spinshare",
     })
     .then((presence) =>
@@ -40,12 +47,11 @@ bot.on("ready", () => {
   }
 });
 
-bot.on("message", (message) => {
+bot.on("messageCreate", (message) => {
   const messageWords = message.content.split(" ");
   const rollFlavor = messageWords.slice(1).join(" ");
   if (messageWords[0] === "!roll") {
     if (messageWords.length >= 1) {
-      // !roll
       return message.reply(
         Math.floor(Math.random() * 100) + 1 + " " + rollFlavor
       );
@@ -53,8 +59,7 @@ bot.on("message", (message) => {
   }
 });
 
-bot.on("message", (message) => {
-  // TODO: ORGANISE ALL THIS, the tech debt is gonna be huge if we continue like this.
+bot.on("messageCreate", (message) => {
   const lowerCaseMessageContent = message.content.toLowerCase();
 
   const faq = [
@@ -62,7 +67,6 @@ bot.on("message", (message) => {
     "import custom",
     "get custom",
     "where can i get custom",
-    "download custom",
     "how do i upload",
     "install custom",
     "what is this server",
