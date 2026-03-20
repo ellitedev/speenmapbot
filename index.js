@@ -77,16 +77,20 @@ bot.on('messageCreate', (message) => {
     message.react('🔍');
     message.react('🎵');
     const searchterm = message.content.slice(8);
-    api.search(searchterm).then(function (songArray) {
-      const i = 0;
-      GetSongData(songArray.data.songs, i, message);
+    api.search(searchterm).then(function(songArray) {
+      if (!songArray.data.songs || songArray.data.songs.length === 0) {
+        return message.reply('No results found!');
+      }
+      GetSongData(songArray.data.songs, 0, message);
     });
   } else if (lowerCaseMessageContent.startsWith('!usearch ')) {
     message.react('🔍');
     const searchterm = message.content.slice(9);
-    api.search(searchterm).then(function (userArray) {
-      const i = 0;
-      GetUserData(userArray.data.users, i, message);
+    api.search(searchterm).then(function(userArray) {
+      if (!userArray.data.users || userArray.data.users.length === 0) {
+        return message.reply('No results found!');
+      }
+      GetUserData(userArray.data.users, 0, message);
     });
   }
 });
