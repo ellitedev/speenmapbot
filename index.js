@@ -27,7 +27,7 @@ for (const file of commandFiles) {
 
 bot.login(process.env.DISCORD_TOKEN);
 
-bot.on('ready', () => {
+bot.on('clientReady', () => {
   console.log('We\'re rolling baby');
   bot.user.setActivity('speen :3', {
     type: 1,
